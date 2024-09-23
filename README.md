@@ -31,3 +31,7 @@ Move your QRIS to `baseqr.jpeg` and victim QRIS to `victim.jpeg`, then type:
 ```
 python3 qrysis.py
 ```
+Or run it with streamlit:
+```
+streamlit run qrysis.py
+```
