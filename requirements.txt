@@ -2,3 +2,4 @@ streamlit
 qrcode
 pyzbar
 numpy
+opencv-python
